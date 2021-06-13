@@ -6,10 +6,10 @@
 // 4. prompt- window.confirm()  to ask user for ok or cancel for the type of password
 // 5. You need 4 confirms, each confirm represents the type of character in the password
 var generatePassword = function () {
-  var finalPassword = "" //finalPassword.length
+  var finalPassword = " " //finalPassword.length
   var lowercase = "abcdefghijklmnopqrstuvwxyz"
   var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-  var specialCharcters = "!@#$%^&*"
+  var specialCharcters = "&^%$#"
   var number = "0123456789"
   var passwordsize = prompt("How many characters would you like your password to contain?")
   console.log(passwordsize)
@@ -24,30 +24,35 @@ var generatePassword = function () {
   var isSpecialCharacter= confirm("Does your password include special characters?")
   
   var isNumber = confirm("Does your password include numbers?")
-  console.log(isLowerCase)
+  console.log(isLowerCase, isUpperCase, isSpecialCharacter, isNumber)
+  
   // ending 
+  for (let index = 0; index < passwordsize.length; index++) {
+    const element = passwordsize[index];
+
   if (isLowerCase) {
     var randomPickLowerCase = Math.floor(Math.random() * lowercase.length)
     var pickOneLowerCaseLetter = lowercase.charAt(randomPickLowerCase)
-    finalPassword =finalPassword + pickOneLowerCaseLetter 
+    finalPassword = finalPassword + pickOneLowerCaseLetter 
   }
   if(isUpperCase){
     var randomPickUpperCase = Math.floor(Math.random() * uppercase.length)
     var pickOneUpperCaseLetter = uppercase.charAt(randomPickUpperCase)
-    finalPassword =finalPassword + pickOneUpperCaseLetter
+    finalPassword = finalPassword + pickOneUpperCaseLetter
   }
   if(isSpecialCharacter){
     var randomPickSpecial = Math.floor(Math.random() * specialCharcters.length)
     var pickOneSpecialCharacter = specialCharcters.charAt(randomPickSpecial)
-    finalPassword =finalPassword + pickOneSpecialCharacter
+    finalPassword = finalPassword + pickOneSpecialCharacter
   }
   if(isNumber){
     var randomPickNumber = Math.floor(Math.random() * number.length)
     var pickOneNumber = number.charAt(randomPickNumber)
-    finalPassword =finalPassword +  pickOneNumber
+    finalPassword = finalPassword +  pickOneNumber
   }
   console.log(pickOneLowerCaseLetter, pickOneUpperCaseLetter, pickOneSpecialCharacter, pickOneNumber)
   return finalPassword
+  }
 }
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
