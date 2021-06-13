@@ -6,6 +6,7 @@
 // 4. prompt- window.confirm()  to ask user for ok or cancel for the type of password
 // 5. You need 4 confirms, each confirm represents the type of character in the password
 var generatePassword = function () {
+  var index = 0
   var finalPassword = "" //finalPassword.length
   var lowercase = "abcdefghijklmnopqrstuvwxyz"
   var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -34,7 +35,7 @@ var generatePassword = function () {
     var pickOneLowerCaseLetter = lowercase.charAt(randomPickLowerCase)
     finalPassword = finalPassword + pickOneLowerCaseLetter
     index++;
-    if (index < passwordsize.length) {
+    if (index < passwordsize) {
      } else {
         return finalPassword
       }
@@ -44,7 +45,7 @@ var generatePassword = function () {
     var pickOneUpperCaseLetter = uppercase.charAt(randomPickUpperCase)
     finalPassword = finalPassword + pickOneUpperCaseLetter
     index++;
-    if (index < passwordsize.length) {
+    if (index < passwordsize) {
      } else {
         return finalPassword
       }
@@ -54,7 +55,7 @@ var generatePassword = function () {
     var pickOneSpecialCharacter = specialCharcters.charAt(randomPickSpecial)
     finalPassword = finalPassword + pickOneSpecialCharacter
     index++;
-    if (index < passwordsize.length) {
+    if (index < passwordsize) {
      } else {
         return finalPassword
       }
@@ -64,7 +65,7 @@ var generatePassword = function () {
     var pickOneNumber = number.charAt(randomPickNumber)
     finalPassword = finalPassword +  pickOneNumber
     index++;
-    if (index < passwordsize.length) {
+    if (index < passwordsize) {
      } else {
         return finalPassword
       }
