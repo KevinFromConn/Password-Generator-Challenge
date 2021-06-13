@@ -6,12 +6,12 @@
 // 4. prompt- window.confirm()  to ask user for ok or cancel for the type of password
 // 5. You need 4 confirms, each confirm represents the type of character in the password
 var generatePassword = function () {
-  var finalPassword = " " //finalPassword.length
+  var finalPassword = "" //finalPassword.length
   var lowercase = "abcdefghijklmnopqrstuvwxyz"
   var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
   var specialCharcters = "&^%$#"
   var number = "0123456789"
-  var passwordsize = prompt("How many characters would you like your password to contain?")
+  var passwordsize = parseInt(prompt("How many characters would you like your password to contain?"), 10)
   console.log(passwordsize)
   if (passwordsize < 8 || passwordsize > 128) {
     window.alert("The password length does not meet the requirements.")
@@ -27,10 +27,9 @@ var generatePassword = function () {
   console.log(isLowerCase, isUpperCase, isSpecialCharacter, isNumber)
   
   // ending 
-  for (let index = 0; index < passwordsize.length;) {
-    const element = passwordsize[index];
+  while (finalPassword.length < passwordsize) {
 
-  if (isLowerCase && index < passwordsize.length) {
+  if (isLowerCase) {
     var randomPickLowerCase = Math.floor(Math.random() * lowercase.length)
     var pickOneLowerCaseLetter = lowercase.charAt(randomPickLowerCase)
     finalPassword = finalPassword + pickOneLowerCaseLetter
@@ -40,7 +39,7 @@ var generatePassword = function () {
         return finalPassword
       }
   }
-  if(isUpperCase && index < passwordsize.length){
+  if(isUpperCase){
     var randomPickUpperCase = Math.floor(Math.random() * uppercase.length)
     var pickOneUpperCaseLetter = uppercase.charAt(randomPickUpperCase)
     finalPassword = finalPassword + pickOneUpperCaseLetter
@@ -50,7 +49,7 @@ var generatePassword = function () {
         return finalPassword
       }
   }
-  if(isSpecialCharacter && index < passwordsize.length){
+  if(isSpecialCharacter){
     var randomPickSpecial = Math.floor(Math.random() * specialCharcters.length)
     var pickOneSpecialCharacter = specialCharcters.charAt(randomPickSpecial)
     finalPassword = finalPassword + pickOneSpecialCharacter
@@ -60,7 +59,7 @@ var generatePassword = function () {
         return finalPassword
       }
   }
-  if(isNumber && index < passwordsize.length){
+  if(isNumber){
     var randomPickNumber = Math.floor(Math.random() * number.length)
     var pickOneNumber = number.charAt(randomPickNumber)
     finalPassword = finalPassword +  pickOneNumber
@@ -76,15 +75,15 @@ var generatePassword = function () {
 }
 // Assignment Code
 
+// Get references to the #generate element
+var generateBtn = document.querySelector("#generate");
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
 }
-
-// Get references to the #generate element
-var generateBtn = document.querySelector("#generate");
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
