@@ -27,56 +27,64 @@ var generatePassword = function () {
   console.log(isLowerCase, isUpperCase, isSpecialCharacter, isNumber)
   
   // ending 
-  for (let index = 0; index < passwordsize.length; index++) {
+  for (let index = 0; index < passwordsize.length;) {
     const element = passwordsize[index];
 
-  if (isLowerCase) {
+  if (isLowerCase && index < passwordsize.length) {
     var randomPickLowerCase = Math.floor(Math.random() * lowercase.length)
     var pickOneLowerCaseLetter = lowercase.charAt(randomPickLowerCase)
-    finalPassword = finalPassword + pickOneLowerCaseLetter 
+    finalPassword = finalPassword + pickOneLowerCaseLetter
+    index++;
+    if (index < passwordsize.length) {
+     } else {
+        return finalPassword
+      }
   }
-  if(isUpperCase){
+  if(isUpperCase && index < passwordsize.length){
     var randomPickUpperCase = Math.floor(Math.random() * uppercase.length)
     var pickOneUpperCaseLetter = uppercase.charAt(randomPickUpperCase)
     finalPassword = finalPassword + pickOneUpperCaseLetter
+    index++;
+    if (index < passwordsize.length) {
+     } else {
+        return finalPassword
+      }
   }
-  if(isSpecialCharacter){
+  if(isSpecialCharacter && index < passwordsize.length){
     var randomPickSpecial = Math.floor(Math.random() * specialCharcters.length)
     var pickOneSpecialCharacter = specialCharcters.charAt(randomPickSpecial)
     finalPassword = finalPassword + pickOneSpecialCharacter
+    index++;
+    if (index < passwordsize.length) {
+     } else {
+        return finalPassword
+      }
   }
-  if(isNumber){
+  if(isNumber && index < passwordsize.length){
     var randomPickNumber = Math.floor(Math.random() * number.length)
     var pickOneNumber = number.charAt(randomPickNumber)
     finalPassword = finalPassword +  pickOneNumber
+    index++;
+    if (index < passwordsize.length) {
+     } else {
+        return finalPassword
+      }
+    }
   }
   console.log(pickOneLowerCaseLetter, pickOneUpperCaseLetter, pickOneSpecialCharacter, pickOneNumber)
   return finalPassword
-  }
 }
 // Assignment Code
-var generateBtn = document.querySelector("#generate");
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
 }
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
-
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
-
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
-}
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
