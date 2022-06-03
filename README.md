@@ -16,4 +16,4 @@ JavaScript (stater code provided by instructor, made functional by me)
 
 # Link to Live Application
 
-[Link to live application](https://kevinfromconn.github.io/friendly-parakeet/)
+[Link to live application](https://kevinfromconn.github.io/Password-Generator-Challenge/)
